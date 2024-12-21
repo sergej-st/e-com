@@ -6,6 +6,7 @@ const morgan = require("morgan")
 const notFoundMiddleware = require("./middleware/notFound")
 const errorHandlerMiddleware = require("./middleware/errorHandlerMiddleware")
 const authRouter = require("./routes/authRoutes")
+const usersRouter = require("./routes/userRoutes")
 //db
 const connectDB = require("./db/connect")
 const initAdmin = require("./db/initAdmin")
@@ -16,6 +17,7 @@ app.use(express.json())
 
 //routes
 app.use("/api/v1/auth",authRouter)
+app.use("/api/v1/users",usersRouter)
 app.use(notFoundMiddleware)
 app.use(errorHandlerMiddleware)
 

@@ -8,7 +8,13 @@ const createUserValidatorSchema = Joi.object({
     role: Joi.string().valid('user', 'admin').default('user')
 })
 
+const updateUserValidatorSchema = Joi.object({
+    name: Joi.string().max(20).lowercase(),
+    email: Joi.string().email()
+})
+
 
 module.exports ={
     createUserValidation: validator(createUserValidatorSchema),
+    updateUserValidation: validator(updateUserValidatorSchema)
 } 
