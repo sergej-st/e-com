@@ -8,6 +8,7 @@ const errorHandlerMiddleware = require("./middleware/errorHandlerMiddleware")
 const authRouter = require("./routes/authRoutes")
 //db
 const connectDB = require("./db/connect")
+const initAdmin = require("./db/initAdmin")
 
 //middleware
 app.use(morgan("tiny"))
@@ -24,6 +25,7 @@ const start = async () =>{
     try{
 
         await connectDB(process.env.MONGOSE_URI) 
+        await initAdmin()
         app.listen(process.env.PORT,()=>{
             console.log("server is running...");
             
